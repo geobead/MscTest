@@ -52,28 +52,27 @@ public class EndToEndTest extends TestBase{
 	
 	@BeforeClass
 	public void setUp() {
-		System.out.print("setup()");
 		initialization(); 
 	}
 	
 	@Test
 	public void setVehicleOnHomePage() {
 		homePage = new HomePage(driver);
-		homePage.setUserVehicle(this.carYear, this.carMake, this.carModel);
+		homePage.setUserVehicle(carYear, carMake, carModel);
 	}
 	
 	@Test(dependsOnMethods= {"setVehicleOnHomePage"})
 	public void selectSeatCover() {
 		String productName = "PROTECT VINYL";
 		productsArchivePage = new ProductsArchivePage(driver);
-		Assert.assertTrue(productsArchivePage.verifyCarHeading(this.carYear, this.carMake, this.carModel));
+		Assert.assertTrue(productsArchivePage.verifyCarHeading(carYear, carMake, carModel));
 		productsArchivePage.selectProductByName(productName);
 	}
 	
 	@Test(dependsOnMethods= {"selectSeatCover"})
 	public void configureSeatCover() {
 		productPage = new ProductPage(driver);
-		productPage.verifyCarConfiguration(this.carYear,this.carMake,this.carModel);
+		productPage.verifyCarConfiguration(carYear,carMake,carModel);
 		productPage.configureProduct("blue", "blue", "front-and-rear","Are these caltrend covers?");
 		productPage.addProductToCart();
 	}
@@ -87,7 +86,7 @@ public class EndToEndTest extends TestBase{
 	}
 	
 	@Test(dependsOnMethods= {"verifyCart"})
-	public void checkoutAndSubmitOrder() throws InterruptedException {
+	public void checkoutAndSubmitOrder() {
 		checkoutPage = new CheckoutPage(driver);
 		checkoutPage.fillOutOrderForm();
 		checkoutPage.verifyOrderSummary(carYear, carMake, carModel);
@@ -96,7 +95,6 @@ public class EndToEndTest extends TestBase{
 	
 	@AfterClass
 	public void tearDown() {
-		System.out.println("tearDown()");
 		shutdownDriver();
 	}
 }

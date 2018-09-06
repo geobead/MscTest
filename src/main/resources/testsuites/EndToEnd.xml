@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MSC End to End Test Suite" parallel="false">
-
-<!-- 
 	<listeners>
-		<listener class-name="com.qa.ExtentReportListener.MyCustomReporter"></listener>
+		<listener
+			class-name="com.qa.reports.ExtentTestNGITestListener" />
 	</listeners>
--->
-<!-- 	The attribute group-by-instances=true would have an effect only 
-		when you are working with factories. It would cause TestNG to run 
-		all the methods within a test class instance together -->
-	<test name="Shopping Test Case"  group-by-instances="true">
+	<!-- The attribute group-by-instances=true would have an effect only when 
+		you are working with factories. It would cause TestNG to run all the methods 
+		within a test class instance together -->
+	<test name="Shopping Test Case" group-by-instances="true">
 		<classes>
-			 <class name="com.msc.qa.testcases.EndToEndTest" />
+			<class name="com.msc.qa.testcases.EndToEndTest" />
 		</classes>
 	</test>
 </suite>
