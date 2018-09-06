@@ -1,11 +1,15 @@
 package com.qa.reports;
 
+import java.io.IOException;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.qa.util.ScreenShot;
 
 public class ExtentTestNGITestListener implements ITestListener {
 	private static ExtentReports extent = ExtentManager.createInstance();
@@ -37,6 +41,18 @@ public class ExtentTestNGITestListener implements ITestListener {
 	@Override
 	public synchronized void onTestFailure(ITestResult result) {
 		test.get().fail(result.getThrowable());
+		String screenShotFilePath;
+		try {
+			screenShotFilePath = ScreenShot.takeScreenShot();
+			// log with snapshot (timestamped failure log entry with screenshot instead of text message)
+	    	test.get().fail("details", MediaEntityBuilder.createScreenCaptureFromPath(screenShotFilePath).build());
+	    	// test with snapshot (attaches screenshot)
+			test.get().fail("details").addScreenCaptureFromPath(screenShotFilePath);
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

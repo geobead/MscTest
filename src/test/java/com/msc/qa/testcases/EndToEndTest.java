@@ -44,9 +44,9 @@ public class EndToEndTest extends TestBase{
 	public static Object[][] carDataProvider(){
 		return new Object[][]{
 			{"1998","HONDA","CIVIC"},
-			{"2015","TOYOTA","CAMRY"},
-			{"2010","CHEVY","MALIBU"},
-			{"2014","FORD","MUSTANG"},
+			//{"2015","TOYOTA","CAMRY"},
+			//{"2010","CHEVY","MALIBU"},
+			//{"2014","FORD","MUSTANG"},
 		};
 	}
 	
@@ -81,7 +81,7 @@ public class EndToEndTest extends TestBase{
 	public void verifyCart() {
 		cartPage = new CartPage(driver);
 		cartPage.clickOnMiniCartButton();
-		cartPage.verifyProductConfiguration(this.carYear, this.carMake, this.carModel);
+		cartPage.verifyProductConfiguration(carYear, carMake, carModel);
 		cartPage.clickOnCheckoutButton();
 	}
 	
@@ -90,6 +90,7 @@ public class EndToEndTest extends TestBase{
 		checkoutPage = new CheckoutPage(driver);
 		checkoutPage.fillOutOrderForm();
 		checkoutPage.verifyOrderSummary(carYear, carMake, carModel);
+		checkoutPage.selectPaymentMethod("paypal");
 		checkoutPage.clickSubmitOrder();
 	}
 	

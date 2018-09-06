@@ -55,6 +55,14 @@ public class CheckoutPage extends PageBase{
 	@FindBy(id="place_order")
 	WebElement submitOrderButton;
 	
+	/*Payment Gateway elements*/
+	@FindBy(id="payment_method_paypal")
+	WebElement paypalRadioButton;
+	
+	@FindBy(id="payment_method_helcimjs")
+	WebElement creditcardRadioButton;
+	
+	
 	/*Order Summary Elements*/
 	@FindBy(css="dd.variation-Year")
 	WebElement carYear;
@@ -81,6 +89,15 @@ public class CheckoutPage extends PageBase{
 		submitOrderButton.click();
 	}
 	
+	public void selectPaymentMethod(String paymentMethod) {
+		if(paymentMethod.equalsIgnoreCase("paypal")) {
+			paypalRadioButton.click();
+		}
+		else {
+			creditcardRadioButton.click();
+		}
+	}
+	
 	public boolean setBillingCountry(String country) {
 		billingCountryDropDownArrow.click();
 		for(WebElement billingCountry:billingCountries) {
@@ -95,6 +112,7 @@ public class CheckoutPage extends PageBase{
 	public boolean setBillingState(String state) {
 		billingStateDropDownArrow.click();
 		for(WebElement billingState:billingStates) {
+			System.out.println(billingState.getText());
 			if(billingState.getText().trim().equals(state)){
 				billingState.click();
 				return true;

@@ -8,7 +8,7 @@
 	<!-- The attribute group-by-instances=true would have an effect only when 
 		you are working with factories. It would cause TestNG to run all the methods 
 		within a test class instance together -->
-	<test name="Shopping Test Case" group-by-instances="true">
+	<test name="Shopping Test Case" group-by-instances="true" preserve-order="true">
 		<classes>
 			<class name="com.msc.qa.testcases.EndToEndTest" />
 		</classes>
