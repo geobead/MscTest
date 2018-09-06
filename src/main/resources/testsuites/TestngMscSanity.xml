@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="FREE CRM Application Test Automation Test Suite">
+<suite name="Seat Covers Test Suite">
 
+<!--
 	<listeners>
 		<listener class-name="com.qa.ExtentReportListener.MyCustomReporter"></listener>
-		<listener class-name="com.crm.qa.analyzer.MyAnnotationTransformer"></listener>
 	</listeners>
-
-	<test name="Free CRM App Test Cases">
+-->
+	<test name="Seat Cover Test Cases">
 		<classes>
-			<!-- <class name="com.crm.qa.testcases.LoginPageTest" />
-			<class name="com.crm.qa.testcases.ContactsPageTest" />
-			 -->
-			 <class name="com.crm.qa.testcases.HomePageTest" />
-		</classes>
-	</test>
-	<test name="Home Page Tests">
-		<classes>
-			<class name="com.crm.qa.testcases.HomePageTest" />
+			 <class name="com.msc.qa.testcases.HomePageTest" />
 		</classes>
 	</test>
 </suite>

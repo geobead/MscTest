@@ -39,8 +39,9 @@ public class TestBase {
 		driver.get("https://kingofseatcovers.com/");
 	}
 	
-	public void shutdown() {
-		driver.close();
-		driver.quit();
+	public void shutdownDriver() {
+		if(driver!=null) {
+			driver.quit();
+		}
 	}
 }

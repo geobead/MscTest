@@ -9,23 +9,26 @@ import org.testng.annotations.Test;
 
 import com.msc.qa.base.TestBase;
 import com.msc.qa.pages.HomePage;
+import com.msc.qa.pages.ProductsArchivePage;
 
-public class HomePageTest extends TestBase {
+public class ProductsArchivePageTest extends TestBase {
 
 	HomePage homePage;
-	final String expectedPageTitle="King of Seat Covers - Custom Seat Covers for Every Car Make and Model | King of Seat Covers";
+	ProductsArchivePage productsArchivePage;
+	final String expectedPageTitle="Products Archive - King of Seat Covers Archive | King of Seat Covers";
 	
 	@BeforeMethod
 	public void setUp() {
 		initialization();
 		homePage = new HomePage(driver);
-		homePage.setPageTitle(expectedPageTitle);
+		homePage.setUserVehicle("2017", "TOYOTA", "CAMRY");
+		productsArchivePage = new ProductsArchivePage(driver);
+		productsArchivePage.setPageTitle(expectedPageTitle);
 	}
 	
-	@Parameters({"browserType"})
 	@Test(priority=1)
-	public void verifyPageTitleTest(@Optional("chrome") String browserType) {
-		Assert.assertTrue(homePage.verifyPageTitle());
+	public void verifyPageTitleTest() {
+		Assert.assertTrue(productsArchivePage.verifyPageTitle());
 	}
 	
 	@AfterMethod

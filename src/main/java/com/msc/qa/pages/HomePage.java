@@ -1,13 +1,14 @@
 package com.msc.qa.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import com.msc.qa.base.TestBase;
+import com.msc.qa.base.PageBase;
 
-public class HomePage extends TestBase{
+public class HomePage extends PageBase{
 
 	/*
 		//Alternative way
@@ -25,13 +26,9 @@ public class HomePage extends TestBase{
 	WebElement modelSelect;
 	
 	
-	public HomePage() {
+	public HomePage(WebDriver driver) {
+		super(driver);
 		PageFactory.initElements(driver, this); 
-	}
-	
-	
-	public Boolean verifyTitle() {
-		return driver.getTitle().equals("King of Seat Covers - Custom Seat Covers for Every Car Make and Model | King of Seat Covers");
 	}
 	
 	public void selectVehicleYear(String year) {
