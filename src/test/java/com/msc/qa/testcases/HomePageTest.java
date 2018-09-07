@@ -1,5 +1,7 @@
 package com.msc.qa.testcases;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -27,6 +29,21 @@ public class HomePageTest extends TestBase {
 	public void verifyPageTitleTest(@Optional("chrome") String browserType) {
 		Assert.assertTrue(homePage.verifyPageTitle());
 	}
+	
+	@Test(priority=2, expectedExceptions= {IOException.class})
+	public void expectedToFailTest() {
+		System.out.println("expected to fail");
+	}
+	
+	boolean failTest = true;
+	@Test(priority=3)
+	public void expectedToEventuallyPassTest() {
+		if(failTest) {
+			failTest=!failTest; //pass next time
+			Assert.assertTrue(false);
+		}
+	}
+	
 	
 	@AfterMethod
 	public void tearDown() {

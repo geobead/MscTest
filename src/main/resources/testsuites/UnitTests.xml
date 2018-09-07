@@ -3,6 +3,12 @@
 <!-- thread-count should at a minimum match the number of tests to optimize parallelization -->
 <!-- <suite name="MSC End to End Test Suite" parallel="tests" thread-count="3">  -->
 <suite name="MSC End to End Test Suite" parallel="false">
+	<listeners>
+	<!-- retry listener -->
+	<listener class-name="com.msc.qa.listeners.AnnotationTransformer"></listener>
+	<!-- extent reports listener -->
+	<listener class-name="com.qa.reports.ExtentTestNGITestListener"></listener>
+	</listeners>
 	<parameter name="browserType" value="chrome"></parameter>
 	<test name="Home Page Unit Test Cases">
 		<classes>

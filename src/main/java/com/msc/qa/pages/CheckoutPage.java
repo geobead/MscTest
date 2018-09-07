@@ -112,7 +112,7 @@ public class CheckoutPage extends PageBase{
 	public boolean setBillingState(String state) {
 		billingStateDropDownArrow.click();
 		for(WebElement billingState:billingStates) {
-			System.out.println(billingState.getText());
+			//System.out.println(billingState.getText());
 			if(billingState.getText().trim().equals(state)){
 				billingState.click();
 				return true;
