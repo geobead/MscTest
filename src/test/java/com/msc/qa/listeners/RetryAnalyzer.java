@@ -5,14 +5,15 @@ import org.testng.ITestResult;
 
 public class RetryAnalyzer implements IRetryAnalyzer{
 
-	int maxRetries = 2;
-	int retryCounter = 0;
+	private int maxRetries = 2;
+	private int retryCounter = 0;
 	
 	@Override
 	public boolean retry(ITestResult result) {
+		if(!result.isSuccess()) {}
 		if(retryCounter<maxRetries) {
 			retryCounter++;
-			return true;
+			return true; 			//Tells TestNG to re-run the test
 		}
 		return false;
 	}
