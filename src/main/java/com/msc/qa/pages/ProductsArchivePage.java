@@ -37,7 +37,7 @@ public class ProductsArchivePage extends PageBase{
 	public void selectProductByName(String name) {
 		String productName = null;
 		for(WebElement product: products) {
-			productName = product.findElement(By.cssSelector("a>h3")).getText();
+			productName = product.findElement(By.cssSelector("a>h2")).getText();
 			if(productName.equals(name)) {
 				product.click();
 				break;
