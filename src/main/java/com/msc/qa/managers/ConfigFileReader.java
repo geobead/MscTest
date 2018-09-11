@@ -16,7 +16,6 @@ public class ConfigFileReader {
 		try {
 			bufferedReader = new BufferedReader(new FileReader(configFilePath));
 			properties.load(bufferedReader);
-			bufferedReader.close();
 		}
 		catch(FileNotFoundException e) {
 			e.printStackTrace();

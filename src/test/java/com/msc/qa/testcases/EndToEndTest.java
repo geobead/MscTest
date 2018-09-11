@@ -8,6 +8,7 @@ import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 import com.msc.qa.base.TestBase;
+import com.msc.qa.dataprovider.ExcelSpreadSheetReader;
 import com.msc.qa.pages.CartPage;
 import com.msc.qa.pages.CheckoutPage;
 import com.msc.qa.pages.HomePage;
@@ -33,9 +34,9 @@ public class EndToEndTest extends TestBase{
 	 * Marks a method as a factory that returns objects that will be used by TestNG
 	 * as Test classes. The method must return Object[].
 	 */
-	@Factory(dataProvider="carDataProvider")
+	@Factory(dataProvider="excelCarDataProvider")
 	public EndToEndTest(String year, String make, String model) {
-		this.carYear = year;
+		this.carYear = (year.contains(".0"))?year.substring(0, year.indexOf(".0")):year;
 		this.carMake = make;
 		this.carModel = model;
 	}
@@ -49,6 +50,12 @@ public class EndToEndTest extends TestBase{
 			//{"2014","FORD","MUSTANG"},
 		};
 	}
+	
+	@DataProvider
+	public static Object[][] excelCarDataProvider(){
+		return ExcelSpreadSheetReader.readSpreadSheet("user_flow");
+	}
+	
 	
 	@BeforeClass
 	public void setUp() {
